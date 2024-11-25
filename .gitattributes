@@ -1,0 +1,16 @@
+# Force text files to use LF
+* text=auto
+
+# Specific file types to use LF
+*.sh text eol=lf
+*.php text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+
+# Specific file types to use CRLF
+*.bat text eol=crlf
+
+# Binary files (no conversion)
+*.png binary
+*.jpg binary
+*.exe binary
