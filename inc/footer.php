@@ -269,13 +269,13 @@
     <div class="jqvmap-label" style="display: none; left: 1093.83px; top: 394.361px;">Idaho</div>
 
     <!-- <script src="<?php echo base_url ?>template/js/jquery.min.js"></script> -->
-    <script src="<?php echo base_url ?>template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="<?php echo base_url ?>template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
     <script src="<?php echo base_url ?>template/vendor/bootstrap-select/bootstrap-select.min.js"></script>
     <script src="<?php echo base_url ?>template/vendor/magnific-popup/magnific-popup.js"></script>
     <script src="<?php echo base_url ?>template/vendor/imagesloaded/imagesloaded.js"></script>
     <script src="<?php echo base_url ?>template/vendor/owl-carousel/owl.carousel.js"></script>
     <script src="<?php echo base_url ?>template/vendor/progress-bar/jquery.appear.js"></script>
-    <script src="<?php echo base_url ?>template/vendor/progress-bar/jquery.skillbar.js"></script>
+    <script src="<?php echo base_url ?>template/vendor/progress-bar/jquery.skillbar.js"></script> -->
     <script src="<?php echo base_url ?>template/vendor/swiper/swiper.min.js"></script>
     <script src="<?php echo base_url ?>template/js/functions.js"></script>
     <script src="<?php echo base_url ?>template/js/contact.js"></script>
