@@ -18,8 +18,8 @@
 					<button class="navbar-toggler collapsed menuicon justify-content-end" type="button" data-bs-toggle="collapse" data-bs-target="#menuDropdown" aria-controls="menuDropdown" aria-expanded="false" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
 					<!-- Secondary Menu -->
 					<div class="secondary-menu">
-						<a href="./" class="btn btn-outline-light">Sign in</a>
-						<a href="./" class="btn btn-primary ms-3">Booking</a>
+						<button type="button" class="btn btn-outline-light" id="registerModalBtn">Sign in</button>
+						<a href="#" class="btn btn-primary ms-3" id="send_request" type="button">Booking</a>
 					</div>
 					<!-- Menu Links -->
 					<div class="menu-links navbar-collapse collapse justify-content-center" id="menuDropdown">
@@ -46,6 +46,7 @@
 		</div>
 		<!-- Main Header End -->
 	</header>
+  <div class="page-content bg-white">
 	<!-- Header End -->
 <!-- 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="topNavBar">

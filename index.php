@@ -8,17 +8,40 @@
 <?php require_once('inc/topBarNav.php') ?>
 <?php $page = isset($_GET['p']) ? $_GET['p'] : 'home';  ?>
 <?php 
+ //echo $page.'.php';
     if(!file_exists($page.".php") && !is_dir($page)){
         include '404.html';
     }else{
-    if(is_dir($page))
-        include $page.'/index.php';
-    else
-        include $page.'.php';
-
+      if(is_dir($page)){
+          include $page.'/index.php';
+      }else{
+          include $page.'.php';
+      }
     }
+   
 ?>
 <?php require_once('inc/footer.php') ?>
+<div class="modal" id="registerModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+       <div class="modal-header">
+          <h4 class="modal-title">Sign in Customer</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+      
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary btnRegister">Sign in</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+
+
 <div class="modal fade" id="confirm_modal" role='dialog'>
     <div class="modal-dialog modal-md modal-dialog-centered" role="document">
       <div class="modal-content">

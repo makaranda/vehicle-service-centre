@@ -56,8 +56,13 @@
        $('#confirm_modal .modal-body').html($msg)
        $('#confirm_modal').modal('show')
     }
+
+    $('#registerModalBtn').on('click',function(){
+      $('#registerModal').modal('show');
+    });
   })
 </script>
+</div>
 <!-- Footer-->
      <!-- Footer ==== -->
      <footer class="footer">
@@ -275,7 +280,7 @@
     <script src="<?php echo base_url ?>template/vendor/imagesloaded/imagesloaded.js"></script>
     <script src="<?php echo base_url ?>template/vendor/owl-carousel/owl.carousel.js"></script>
     <script src="<?php echo base_url ?>template/vendor/progress-bar/jquery.appear.js"></script>
-    <script src="<?php echo base_url ?>template/vendor/progress-bar/jquery.skillbar.js"></script> -->
+    <script src="<?php echo base_url ?>template/vendor/progress-bar/jquery.skillbar.js"></script>
     <script src="<?php echo base_url ?>template/vendor/swiper/swiper.min.js"></script>
     <script src="<?php echo base_url ?>template/js/functions.js"></script>
     <script src="<?php echo base_url ?>template/js/contact.js"></script>

@@ -76,7 +76,7 @@
     <link rel="stylesheet" href="<?php echo base_url ?>template/vendor/magnific-popup/magnific-popup.min.css">
     <link rel="stylesheet" href="<?php echo base_url ?>template/vendor/bootstrap-select/bootstrap-select.min.css">
     <link rel="stylesheet" href="<?php echo base_url ?>template/vendor/swiper/swiper.min.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url ?>template/css/style.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url ?>template/css/style.css?v=<?php echo time();?>">
 
 
     <style type="text/css">/* Chart.js */
