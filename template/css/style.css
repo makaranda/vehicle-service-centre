@@ -9509,7 +9509,7 @@ section {
 
 .form-control {
   border-radius: 0;
-  border: 1px solid transparent;
+  border: 1px solid #ed0000;
   padding: 0px 15px;
   font-size: 16px;
   font-weight: 400;
@@ -9528,16 +9528,22 @@ section {
     color: #777777; }
   .form-control:hover {
     box-shadow: none;
-    outline: none;
-    border-color: #E1E1F0;
+    outline: auto;
+    border-color: #0303c2;
     color: #777777;
-    background: #ffffff; }
+    background: #ffffff;
+    outline-color: blueviolet;
+    outline-width: 1px;
+  }
   .form-control:focus, .form-control:active, .form-control.active {
     box-shadow: none;
-    outline: none;
+    outline: auto;
     border-color: #f42222;
     color: #777777;
-    background: #ffffff; }
+    background: #ffffff;
+    outline-color: #28004c;
+    outline-width: 1px;
+}
 
 input:-internal-autofill-selected {
   background: white;

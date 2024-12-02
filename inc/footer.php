@@ -216,6 +216,37 @@
 	<button class="back-to-top fa fa-chevron-up"></button>
 
 
+  <div class="modal" id="registerModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Sign in Customer</h4>
+            <button type="button" class="btn-close" data-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+              <div class="row">
+                <div class="col-12 col-md-12">
+                  <form action="" method="post">
+                    <div class="mb-3">
+                      <label for="email" class="form-label">Email address</label>
+                      <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                      <label for="password" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="password">
+                    </div>                  
+                </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-warning btnRegister">Sign in</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
+
    
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
