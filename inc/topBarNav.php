@@ -1,4 +1,7 @@
 <!-- Header -->
+ <?php
+  //var_dump($_SESSION);
+ ?>
 <header class="header header-transparent rs-nav">
 		<!-- Menu Header -->
 		<div class="sticky-header navbar-expand-lg">
@@ -19,6 +22,7 @@
 					<!-- Secondary Menu -->
 					<div class="secondary-menu">
 						<button type="button" class="btn btn-outline-light" id="registerModalBtn">Sign in</button>
+						<button type="button" class="btn btn-warning ml-3" id="loginModalBtn">Login</button>
 						<a href="#" class="btn btn-primary ms-3" id="send_request" type="button">Booking</a>
 					</div>
 					<!-- Menu Links -->

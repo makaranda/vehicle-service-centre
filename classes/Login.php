@@ -13,7 +13,7 @@ class Login extends DBConnection {
 		parent::__destruct();
 	}
 	public function index(){
-		echo "<h1>Access Denied</h1> <a href='".base_url."'>Go Back.</a>";
+		//echo "<h1>Access Denied</h1> <a href='".base_url."'>Go Back.</a>";
 	}
 	public function login(){
 		extract($_POST);
@@ -27,16 +27,46 @@ class Login extends DBConnection {
 
 			}
 			$this->settings->set_userdata('login_type',1);
-		return json_encode(array('status'=>'success'));
+			return json_encode(array('status'=>'success'));
 		}else{
-		return json_encode(array('status'=>'incorrect','last_qry'=>"SELECT * from users where username = '$username' and password = md5('$password') "));
+			return json_encode(array('status'=>'incorrect','last_qry'=>"SELECT * from users where username = '$username' and password = md5('$password') "));
 		}
 	}
-	public function logout(){
-		if($this->settings->sess_des()){
-			redirect('admin/login.php');
+	
+	// public function customer(){
+	// 	extract($_POST);
+
+	// 	$qry = $this->conn->query("SELECT * from users where username = '$username' and password = md5('$password') ");
+	// 	if($qry->num_rows > 0){
+	// 		foreach($qry->fetch_array() as $k => $v){
+	// 			if(!is_numeric($k) && $k != 'password'){
+	// 				$this->settings->set_userdata($k,$v);
+	// 			}
+
+	// 		}
+	// 		$this->settings->set_userdata('login_type',3);
+	// 		//return json_encode(array('status'=>'success'));
+	// 	}else{
+	// 		return json_encode(array('status'=>'incorrect','last_qry'=>"SELECT * from users where username = '$username' and password = md5('$password') "));
+	// 	}
+	// }
+
+	public function logout() {
+		if ($this->settings->sess_des()) {
+			if (isset($_SESSION['login_type']) && $_SESSION['login_type'] == 1) {
+				header('Location: admin/login.php');
+			} else {
+				header('Location: ../');
+			}
+			exit; // Ensures no further code is executed after redirection
+		} else {
+			echo json_encode([
+				'status' => 'error',
+				'message' => 'Failed to destroy session'
+			]);
 		}
 	}
+
 	function login_user(){
 		extract($_POST);
 		$qry = $this->conn->query("SELECT * from clients where email = '$email' and password = md5('$password') ");

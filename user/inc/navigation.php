@@ -31,9 +31,6 @@
                         </p>
                       </a>
                     </li> 
-                    <?php
-                      if($_SESSION['userdata']['type'] < 3){
-                    ?>
                     <li class="nav-item dropdown">
                       <a href="<?php echo base_url ?>admin/?page=mechanics" class="nav-link nav-mechanics">
                         <i class="nav-icon fas fa-users-cog"></i>
@@ -42,9 +39,6 @@
                         </p>
                       </a>
                     </li>
-                    <?php
-                      }
-                    ?>
                     <li class="nav-item dropdown">
                       <a href="<?php echo base_url ?>admin/?page=service_requests" class="nav-link nav-service_requests">
                         <i class="nav-icon fas fa-file-invoice"></i>

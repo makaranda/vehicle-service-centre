@@ -1,9 +1,4 @@
 <h1 class="text-light">Welcome to <?php echo $_settings->info('name') ?></h1>
-<span class="text-white">
-<?php
-		var_dump($_SESSION);
-	?>
-</span>  
 <hr class="border-light">
 <div class="row">
           <div class="col-12 col-sm-6 col-md-3">

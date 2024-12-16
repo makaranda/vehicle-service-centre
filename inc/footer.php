@@ -1,5 +1,82 @@
 <script>
   $(document).ready(function(){
+
+    $('#frmCustomerRegistrasion').parsley();
+    $('#frmCustomerRegistrasion').on('submit', function(event){
+        event.preventDefault();
+        // $('#overlay').show();
+        var formData = new FormData(this);
+        $.ajax({
+            url : _base_url_+'action/user_registration.php',
+            cache: false,
+            data: formData,
+            type: 'POST',
+            dataType: 'json',
+            contentType: false, // Important for file upload
+            processData: false, // Important for file upload
+            success : function(response) {
+                $('#registerModal').modal('hide');
+                console.log(response);
+                //var arr = data.split("|");
+                $('#frmCustomerRegistrasion').parsley().reset();
+                $('#frmCustomerRegistrasion')[0].reset();
+                Swal.fire({
+                    position: "bottom-end",
+                    icon: response.messageType === 'success' ? "success" : "error",
+                    title: response.message,
+                    showConfirmButton: false,
+                    timer: response.messageType === 'success' ? 4000 : 2500
+                });
+      
+                // $('#overlay').hide();
+            },
+            error: function(xhr, status, error) {
+                console.log("Error getting request ! \n", xhr, status, error);
+                $('#overlay').hide();
+            }
+        });
+
+    });
+
+    $('#frmCustomerLogin').parsley();
+    $('#frmCustomerLogin').on('submit', function(event){
+        event.preventDefault();
+        // $('#overlay').show();
+        var formData = new FormData(this);
+        $.ajax({
+            url : _base_url_+'action/user_login.php?f=login',
+            cache: false,
+            data: formData,
+            type: 'POST',
+            dataType: 'json',
+            contentType: false, // Important for file upload
+            processData: false, // Important for file upload
+            success : function(response) {
+                $('#loginModal').modal('hide');
+                console.log(response);
+                //var arr = data.split("|");
+                $('#frmCustomerLogin').parsley().reset();
+                $('#frmCustomerLogin')[0].reset();
+                Swal.fire({
+                    position: "bottom-end",
+                    icon: response.status === 'success' ? "success" : "error",
+                    title: response.message,
+                    showConfirmButton: false,
+                    timer: response.status === 'success' ? 4000 : 2500
+                });
+                location.replace(_base_url_ + 'admin');
+                //location.replace(''+_base_url_+'admin');
+      
+                // $('#overlay').hide();
+            },
+            error: function(xhr, status, error) {
+                console.log("Error getting request ! \n", xhr, status, error);
+                $('#overlay').hide();
+            }
+        });
+
+    });
+
     $('#p_use').click(function(){
       uni_modal("Privacy Policy","policy.php","mid-large")
     })
@@ -59,6 +136,10 @@
 
     $('#registerModalBtn').on('click',function(){
       $('#registerModal').modal('show');
+    });
+
+     $('#loginModalBtn').on('click',function(){
+      $('#loginModal').modal('show');
     });
   })
 </script>
@@ -170,26 +251,26 @@
 						</div>
 					</div>
 					<div class="col-xl-3 col-md-6">
-                        <div class="widget widget_info">
-                            <h5 class="footer-title">Subscribe Now</h5>
-							<p class="mb-20">Weekly Breaking News Analysis And Cutting Edge Advices On Job Searching.</p>
-							<form class="subscribe-form subscription-form mb-30" action="https://serfix.themetrades.com/html/demo/script/mailchamp.php" method="post">
-								<div class="ajax-message"></div>
-								<div class="input-group">
-									<input name="email" required="required" class="form-control" placeholder="Email Address" type="email">
-									<div class="input-group-append">
-										<button name="submit" value="Submit" type="submit" class="btn w-100 btn-primary radius-sm">Send</button>	
-									</div>
-								</div>
-							</form>
-							<ul class="list-inline ft-social-bx">
-								<li><a href="javascript:void(0);" class="btn button-sm"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="javascript:void(0);" class="btn button-sm"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="javascript:void(0);" class="btn button-sm"><i class="fa fa-linkedin"></i></a></li>
-								<li><a href="javascript:void(0);" class="btn button-sm"><i class="fa fa-google-plus"></i></a></li>
-							</ul>
-						</div>
+              <div class="widget widget_info">
+                <h5 class="footer-title">Subscribe Now</h5>
+                  <p class="mb-20">Weekly Breaking News Analysis And Cutting Edge Advices On Job Searching.</p>
+                  <form class="subscribe-form subscription-form mb-30" action="https://serfix.themetrades.com/html/demo/script/mailchamp.php" method="post">
+                    <div class="ajax-message"></div>
+                    <div class="input-group">
+                      <input name="email" required="required" class="form-control" placeholder="Email Address" type="email">
+                      <div class="input-group-append">
+                        <button name="submit" value="Submit" type="submit" class="btn w-100 btn-primary radius-sm">Send</button>	
+                      </div>
                     </div>
+                  </form>
+                  <ul class="list-inline ft-social-bx">
+                    <li><a href="javascript:void(0);" class="btn button-sm"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="javascript:void(0);" class="btn button-sm"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="javascript:void(0);" class="btn button-sm"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="javascript:void(0);" class="btn button-sm"><i class="fa fa-google-plus"></i></a></li>
+                  </ul>
+              </div>
+          </div>
                 </div>
             </div>
         </div>
@@ -197,24 +278,54 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 text-center text-md-start">
-						<p class="mb-0">© Copyright  <?php echo $_settings->info('short_name') ?> <?php echo date('Y');?>. All right reserved.</p>
-					</div>
-					<div class="col-lg-6 col-md-6 col-sm-12 text-center text-md-end">
-						<ul class="widget-link">
-							<li><a href="index-2.html">Home</a></li>
-							<li><a href="about-1.html">About</a></li>
-							<li><a href="faq-1.html">FAQs</a></li>
-							<li><a href="service-1.html">Services</a></li>
-							<li><a href="contact-1.html">Contact</a></li>
-						</ul>
-					</div>
+                      <p class="mb-0">© Copyright  <?php echo $_settings->info('short_name') ?> <?php echo date('Y');?>. All right reserved.</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 text-center text-md-end">
+                      <ul class="widget-link">
+                        <li><a href="index-2.html">Home</a></li>
+                        <li><a href="about-1.html">About</a></li>
+                        <li><a href="faq-1.html">FAQs</a></li>
+                        <li><a href="service-1.html">Services</a></li>
+                        <li><a href="contact-1.html">Contact</a></li>
+                      </ul>
+                    </div>
                 </div>
             </div>
-		</div>
+		    </div>
     </footer>
     <!-- Footer END ==== -->
 	<button class="back-to-top fa fa-chevron-up"></button>
-
+  
+  <div class="modal" id="loginModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Login Customer</h4>
+            <button type="button" class="btn-close" data-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+              <div class="row">
+                <div class="col-12 col-md-12">
+                  <form action="" id="frmCustomerLogin" method="post">
+                    <div class="mb-3">
+                      <label for="username" class="form-label">Username</label>
+                      <input type="text" class="form-control" id="username" name="username" placeholder="kavindu123" required>
+                    </div> 
+                    <div class="mb-3">
+                      <label for="password" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="password" name="password" required>
+                    </div>                  
+                </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-warning btnRegister">Login</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
 
   <div class="modal" id="registerModal">
     <div class="modal-dialog">
@@ -226,14 +337,30 @@
           <div class="modal-body">
               <div class="row">
                 <div class="col-12 col-md-12">
-                  <form action="" method="post">
+                  <form action="" id="frmCustomerRegistrasion" method="post">
+                    <div class="mb-3">
+                      <label for="fname" class="form-label">First Name</label>
+                      <input type="text" class="form-control" id="fname" name="fname" placeholder="Kavindu" required>
+                    </div> 
+                    <div class="mb-3">
+                      <label for="lname" class="form-label">Last Name</label>
+                      <input type="text" class="form-control" id="lname" name="lname" placeholder="Praveen">
+                    </div> 
                     <div class="mb-3">
                       <label for="email" class="form-label">Email address</label>
-                      <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                      <input type="email" class="form-control" id="email" name="email" placeholder="kavindu@gmail.com" required>
                     </div>
                     <div class="mb-3">
+                      <label for="phone" class="form-label">Phone</label>
+                      <input type="text" class="form-control" id="phone" name="phone" placeholder="0777123456" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="username" class="form-label">Username</label>
+                      <input type="text" class="form-control" id="username" name="username" placeholder="kavindu123" required>
+                    </div> 
+                    <div class="mb-3">
                       <label for="password" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="password">
+                      <input type="password" class="form-control" id="password" name="password" required>
                     </div>                  
                 </div>
               </div>
@@ -315,3 +442,7 @@
     <script src="<?php echo base_url ?>template/vendor/swiper/swiper.min.js"></script>
     <script src="<?php echo base_url ?>template/js/functions.js"></script>
     <script src="<?php echo base_url ?>template/js/contact.js"></script>
+
+    <script>
+
+    </script>

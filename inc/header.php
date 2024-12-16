@@ -76,6 +76,7 @@
     <link rel="stylesheet" href="<?php echo base_url ?>template/vendor/magnific-popup/magnific-popup.min.css">
     <link rel="stylesheet" href="<?php echo base_url ?>template/vendor/bootstrap-select/bootstrap-select.min.css">
     <link rel="stylesheet" href="<?php echo base_url ?>template/vendor/swiper/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url ?>assets/css/parsley.css?v=<?php echo time();?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url ?>template/css/style.css?v=<?php echo time();?>">
 
 
@@ -95,6 +96,7 @@
         var _base_url_ = '<?php echo base_url ?>';
     </script>
     <script src="<?php echo base_url ?>dist/js/script.js"></script>
+    <script src="<?php echo base_url ?>assets/js/parsley.js"></script>
     <script src="<?php echo base_url ?>assets/js/scripts.js"></script>
     <style>
     html,
