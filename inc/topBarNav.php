@@ -1,6 +1,7 @@
 <!-- Header -->
  <?php
   //var_dump($_SESSION);
+  //var_dump($_SESSION['userdata']);
  ?>
 <header class="header header-transparent rs-nav">
 		<!-- Menu Header -->
@@ -21,9 +22,30 @@
 					<button class="navbar-toggler collapsed menuicon justify-content-end" type="button" data-bs-toggle="collapse" data-bs-target="#menuDropdown" aria-controls="menuDropdown" aria-expanded="false" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
 					<!-- Secondary Menu -->
 					<div class="secondary-menu">
-						<button type="button" class="btn btn-outline-light" id="registerModalBtn">Sign in</button>
-						<button type="button" class="btn btn-warning ml-3" id="loginModalBtn">Login</button>
-						<a href="#" class="btn btn-primary ms-3" id="send_request" type="button">Booking</a>
+            <?php
+              if (isset($_SESSION['userdata']['id']) && $_SESSION['userdata']['id'] > 0):
+            ?>
+              <ul class="nav navbar-nav" id="user_dropdown_menu">	
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <?php echo $_SESSION['userdata']['firstname'];?> <i class="fa fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo base_url ?>/admin">Dashboard</a></li>
+                        <li><a href="<?php echo base_url ?>/admin/?page=user">Profile</a></li>
+                        <li><a href="<?php echo base_url ?>/classes/Login.php?f=logout">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <?php
+              else:
+            ?>    
+              <button type="button" class="btn btn-outline-light" id="registerModalBtn">Sign in</button>
+              <button type="button" class="btn btn-warning ml-3" id="loginModalBtn">Login</button>
+              <a href="#" class="btn btn-primary ms-3" id="send_request" type="button">Booking</a>  
+            <?php    
+              endif;
+            ?>
 					</div>
 					<!-- Menu Links -->
 					<div class="menu-links navbar-collapse collapse justify-content-center" id="menuDropdown">

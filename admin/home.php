@@ -1,7 +1,7 @@
 <h1 class="text-light">Welcome to <?php echo $_settings->info('name') ?></h1>
 <span class="text-white">
 <?php
-		var_dump($_SESSION);
+		// var_dump($_SESSION);
 	?>
 </span>  
 <hr class="border-light">

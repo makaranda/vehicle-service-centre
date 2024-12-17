@@ -15618,3 +15618,31 @@ ul[class*="list-"].fs18 {
   border-bottom: 0;
   padding-bottom: 0;
   margin-bottom: 20px; }
+
+      
+  #user_dropdown_menu{
+    li{
+      a{
+        font-size: 16px;
+        color: #fff;
+        text-transform: uppercase;
+      }
+      ul{
+         li{
+            a{
+              color: #000;
+              padding: 6px;
+              &:hover{
+                color: #fff;
+                background-color: #ccc;
+              }
+            }
+            padding: 6px;
+            &:hover{
+              color: #fff;
+              background-color: #ccc;
+            }
+         }
+      }
+    }
+ }

@@ -84,7 +84,7 @@ while($row = $meta->fetch_assoc()){
                         <option value="<?php echo $row['id'] ?>" <?php echo isset($service_id) && in_array($row['id'],explode(",",$service_id))? "selected" : '' ?>><?php echo  $row['service'] ?></option>
                         <?php endwhile; ?>
                     </select>
-                </div>
+                </div> 
                 <div class="form-group">
                     <label for="service_type" class="control-label">Request Type</label>
                     <select name="service_type" id="service_type" class="form-select form-select-sm select2 rounded-0" required>
@@ -92,13 +92,26 @@ while($row = $meta->fetch_assoc()){
                         <option <?php echo isset($service_type) && $service_type == 'Pick Up' ? "selected" : '' ?>>Pick Up</option>
                     </select>
                 </div>
+              </div>
+              <div class="col-md-12"> 
                 <div class="form-group" <?php echo isset($service_type) && $service_type == 'Drop Off' ? 'style="display:none"' : '' ?>>
                     <label for="pickup_address" class="control-label">Pick up Address</label>
-                    <textarea rows="3" name="pickup_address" id="pickup_address" class="form-control form-control-sm rounded-0" style="resize:none" required><?php echo isset($pickup_address) ? $pickup_address : "" ?></textarea>
+                    <textarea rows="3" name="pickup_address" id="pickup_address" class="form-control form-control-sm rounded-0" style="resize:none"><?php echo isset($pickup_address) ? $pickup_address : "" ?></textarea>
                 </div>
             </div>
+            
+        <?php
+            if(isset($_SESSION['userdata']['type']) && $_SESSION['userdata']['type'] != 3){
+        ?>
+            <input type="hidden" name="status" id="status" value="0">
+        <?php
+            }
+        ?>    
         </div>
         <hr class="border-light">
+        <?php
+            if(isset($_SESSION['userdata']['type']) && $_SESSION['userdata']['type'] != 3){
+        ?>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group " id="mechanic-holder">
@@ -127,6 +140,9 @@ while($row = $meta->fetch_assoc()){
                 </div>
             </div>
         </div>
+        <?php
+            }
+        ?>
     </div>
         <div class="w-100 d-flex justify-content-end mx-2">
             <div class="col-auto">
